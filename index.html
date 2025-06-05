@@ -6,14 +6,20 @@
 </head>
 <body>
     <h1>HomeWizard P1 Data</h1>
-    <pre id="output">Loading...</pre>
+    <pre id="output" style="white-space: pre-wrap; font-family: monospace;">Loading...</pre>
     <script>
         async function loadData() {
             try {
                 const resp = await fetch('/data');
                 if (!resp.ok) throw new Error('HTTP ' + resp.status);
                 const text = await resp.text();
-                document.getElementById('output').textContent = text;
+                try {
+                    const json = JSON.parse(text);
+                    document.getElementById('output').textContent = JSON.stringify(json, null, 2);
+                } catch (e) {
+                    // Fallback to plain text if response isn't JSON
+                    document.getElementById('output').textContent = text;
+                }
             } catch (err) {
                 document.getElementById('output').textContent = 'Error: ' + err;
             }

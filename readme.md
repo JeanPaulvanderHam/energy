@@ -19,5 +19,5 @@ pip install -r requirements.txt
 python3 app.py
 ```
 
-Open <http://localhost:5000> in your browser. The application will query `http://192.168.50.57/api/v1/data` and display the raw response.
+Open <http://localhost:5000> in your browser. The application will query `http://192.168.50.57/api/v1/data` and display the response as formatted JSON.
 
