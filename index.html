@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HomeWizard P1 Data</title>
+</head>
+<body>
+    <h1>HomeWizard P1 Data</h1>
+    <pre id="output">Loading...</pre>
+    <script>
+        async function loadData() {
+            try {
+                const resp = await fetch('/data');
+                if (!resp.ok) throw new Error('HTTP ' + resp.status);
+                const text = await resp.text();
+                document.getElementById('output').textContent = text;
+            } catch (err) {
+                document.getElementById('output').textContent = 'Error: ' + err;
+            }
+        }
+        loadData();
+    </script>
+</body>
+</html>
